@@ -9,14 +9,14 @@ crate:
     - './exports/error:/tmp/error'
   command: crate -Cingestion.mqtt.enabled=true -Clicense.ident=DOCKER-DEMO-FE291C3
 
-bridge:  
+bridge:
   build: ./bridge
   links:
     - crate
 aggregate:
   build: ./aggregate
   links:
-    - bridge 
+    - bridge
     - crate
   environment:
     - CRATE_HOST=crate
@@ -27,8 +27,8 @@ grafana:
     - './grafana_data/grafana.db:/var/lib/grafana/grafana.db'
   ports:
     - '3000:3000'
-  environment: 
-    - GF_INSTALL_PLUGINS=crate-datasource
+  environment:
+    - GF_INSTALL_PLUGINS=crate-datasource,natel-plotly-panel
   links:
     - crate
 
