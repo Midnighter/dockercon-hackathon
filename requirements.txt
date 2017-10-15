@@ -1,0 +1,8 @@
+jupyter
+crate
+numpy
+pandas
+scipy
+plotly
+matplotlib
+sklearn
